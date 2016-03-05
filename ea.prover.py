@@ -199,7 +199,7 @@ def main(options):
 	hit = 0
 	input_name = input.split("/")[-1]
 	input_name = input_name[0:input_name.find(".v")]
-	print input_name
+	print(input_name)
 	dir = input_name
 	cmd = ("coqc " + dir + "/" + options.output_file + " -verbose").split(" ")
 	proof_seq = set()
@@ -228,7 +228,7 @@ def main(options):
 
 			#print 1
 			w.write("Generation No.%d\n" % (i+1))
-			print("Generation No.%d" % (i+1))
+			print(("Generation No.%d" % (i+1)))
 			with open(dir + '/record', 'a') as a:
 				a.write("Generation No.%d\n" % (i+1))
 				cal_fitness(pop, proof, a, dir)
@@ -299,12 +299,12 @@ def main(options):
 		
 		p = subprocess.Popen(cmd, stdout = subprocess.PIPE,
 							stderr = subprocess.STDOUT, close_fds = True)
-		print("%s\n%sis defined" % (p.stdout.read(), lemma))
+		print(("%s\n%sis defined" % (p.stdout.read(), lemma)))
 		sys.stdout.write(str(len(proof_seq)) + " hit(s), " + options.generation + " Genrations, " + options.population
 			+ " Population with " + str(len(tactics)) + " Tactics\n*")
 			
 	else:
-		print "Failed\n"
+		print ("Failed\n")
 		
 if __name__ == "__main__":
 	tStart = time.time()
@@ -336,7 +336,7 @@ if __name__ == "__main__":
 	if not input:
 		opt_parser.error('Need your input')
 	if not re.compile("^.*\.v$").match(options.output_file):
-		print("%s" % options.output_file)
+		print(("%s" % options.output_file))
 		opt_parser.error('Need your output.v')
 	if not str.isdigit(options.population):
 		opt_parser.error('Need an integer')
